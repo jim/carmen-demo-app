@@ -1,4 +1,4 @@
-# Carmen Demo App
+# carmen-rails Demo App
 
 This app is a proof of concept to illustrate how to use
 [carmen-rails](https://github.com/jim/carmen-rails) inside a simple form in a Rails
