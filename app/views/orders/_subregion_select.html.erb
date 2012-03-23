@@ -1,0 +1,2 @@
+<% parent_region ||= params[:parent_region] || 'US' %>
+<%= subregion_select(:order, :state_code, parent_region) %>

@@ -1,0 +1,29 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :country_code %><br />
+    <%= f.country_select :country_code, priority: %w(US CA), prompt: 'Please select a country' %>
+  </div>
+  <div class="field">
+    <%= f.label :state_code %><br />
+    <%= render partial: 'subregion_select' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
