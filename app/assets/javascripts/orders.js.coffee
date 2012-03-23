@@ -4,12 +4,11 @@
 
 $ ->
   $('select#order_country_code').change (event) ->
-    subregion_select = $('select#order_state_code')
+    select_wrapper = $('#order_state_code_wrapper')
 
-    subregion_select.attr('disabled', true)
+    $('select', select_wrapper).attr('disabled', true)
 
     country_code = $(this).val()
 
     url = "/orders/subregion_options?parent_region=#{country_code}"
-    subregion_select.load url, (data, success, xhr) ->
-      subregion_select.attr('disabled', false)
+    select_wrapper.load(url)
