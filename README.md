@@ -43,25 +43,36 @@ selects to your form:
 Here is the content of the `subregion_select` partial:
 
 ```erb
-<% parent_region ||= params[:parent_region] || 'US' %>
-<%= subregion_select(:order, :state_code, parent_region) %>
+<div id="order_state_code_wrapper">
+  <% parent_region ||= params[:parent_region] || 'US' %>
+  <% country = Carmen::Country.coded(parent_region) %>
+
+  <% if country.subregions? %>
+    <%= subregion_select(:order, :state_code, parent_region) %>
+  <% else %>
+    <%= text_field(:order, :state_code) %>
+  <% end %>
+</div>
 ```
 
-Now we will add a small script that updates the value of the subregion select
-when the country select's value changes:
+Note that we're defaulting to a text field input when we don't have subregion
+information for a country. You may want different behavior in your application,
+such as not rendering the input at all.
+
+Now we will add a small script that replaces the subregion select when the country
+select's value changes. A wrapper div has been added to make this simpler.
 
 ```coffeescript
 $ ->
   $('select#order_country_code').change (event) ->
-    subregion_select = $('select#order_state_code')
+    select_wrapper = $('#order_state_code_wrapper')
 
-    subregion_select.attr('disabled', true)
+    $('select', select_wrapper).attr('disabled', true)
 
     country_code = $(this).val()
 
     url = "/orders/subregion_options?parent_region=#{country_code}"
-    subregion_select.load url, (data, success, xhr) ->
-      subregion_select.attr('disabled', false)
+    select_wrapper.load(url)
 ```
 
 Now we just need to add a route to `config/routes.rb`:
