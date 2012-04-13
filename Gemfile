@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-gem 'carmen', path: '../carmen'
-gem 'carmen-rails', path: '../carmen-rails'
+gem 'carmen', git: 'git://github.com/jim/carmen.git'
+gem 'carmen-rails', git: 'git://github.com/jim/carmen-rails.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

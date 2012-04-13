@@ -1,14 +1,16 @@
-PATH
-  remote: ../carmen
+GIT
+  remote: git://github.com/jim/carmen-rails.git
+  revision: f2f106790ec6cb115b90021a4806bf2785f4e7d6
   specs:
-    carmen (1.0.0.pre)
-
-PATH
-  remote: ../carmen-rails
-  specs:
-    carmen-rails (0)
-      carmen
+    carmen-rails (1.0.0.beta1)
+      carmen (= 1.0.0.beta1)
       rails
+
+GIT
+  remote: git://github.com/jim/carmen.git
+  revision: 4670647caed4c570545ec0f8a6e816355284e404
+  specs:
+    carmen (1.0.0.beta1)
 
 GEM
   remote: https://rubygems.org/
@@ -58,13 +60,13 @@ GEM
     jquery-rails (2.0.1)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
-    json (1.6.5)
+    json (1.6.6)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.18)
-    multi_json (1.1.0)
+    multi_json (1.2.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -106,7 +108,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.32)
+    tzinfo (0.3.33)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
