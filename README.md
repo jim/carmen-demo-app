@@ -44,10 +44,12 @@ Here is the content of the `subregion_select` partial:
 
 ```erb
 <div id="order_state_code_wrapper">
-  <% parent_region ||= params[:parent_region] || 'US' %>
+  <% parent_region ||= params[:parent_region] %>
   <% country = Carmen::Country.coded(parent_region) %>
 
-  <% if country.subregions? %>
+  <% if country.nil? %>
+    <em>Please select a country above</em>
+  <% elsif country.subregions? %>
     <%= subregion_select(:order, :state_code, parent_region) %>
   <% else %>
     <%= text_field(:order, :state_code) %>
@@ -56,8 +58,8 @@ Here is the content of the `subregion_select` partial:
 ```
 
 Note that we're defaulting to a text field input when we don't have subregion
-information for a country. You may want different behavior in your application,
-such as not rendering the input at all.
+information for a country, and that if we don't have a country at all, we show
+a simple message.
 
 Now we will add a small script that replaces the subregion select when the country
 select's value changes. A wrapper div has been added to make this simpler.
