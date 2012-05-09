@@ -1,5 +1,10 @@
 class OrdersController < ApplicationController
 
+  before_filter do
+    locale = params[:locale]
+    Carmen.i18n_backend.locale = locale if locale
+  end
+
   def subregion_options
     render partial: 'subregion_select'
   end

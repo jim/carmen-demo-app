@@ -12,3 +12,6 @@ $ ->
 
     url = "/orders/subregion_options?parent_region=#{country_code}"
     select_wrapper.load(url)
+
+  $('select#locale').change (event) ->
+    $(@).closest('form').submit()
