@@ -4,7 +4,7 @@
 
 <form method="get">
   <h2>Change the locale</h2>
-  <p>This will reload the page. This is for demonstration of Carmen's locale
-     functionalityi only .</p>
+  <p>This will reload the page- it is just a demonstration of Carmen's locale
+     functionality.</p>
   <%= select_tag 'locale', options_for_select(Carmen.i18n_backend.available_locales, I18n.locale) -%>
 </form>
