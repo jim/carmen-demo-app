@@ -36,7 +36,7 @@ selects to your form:
 ```erb
 <div class="field">
   <%= f.label :state_code %><br />
-  <%= render partial: 'subregion_select' %>
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %>
 </div>
 ```
 
